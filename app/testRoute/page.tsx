@@ -1,11 +1,23 @@
 import Image from "next/image";
+import { gsap } from 'gsap';
+import DotGrid from "../components/DotGrid";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <p className="text-7xl text-white">TestRoute</p>
-      </main>
+        <div className="w-screen h-screen relative">
+        <DotGrid
+            dotSize={4}
+            gap={18}
+            baseColor="#113983"
+            activeColor="#2e5dc2"
+            proximity={130}
+            shockRadius={170}
+            shockStrength={5}
+            resistance={150}
+            returnDuration={1.}
+        />
+        </div>
     </div>
   );
 }

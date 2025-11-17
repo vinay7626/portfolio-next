@@ -1,22 +1,22 @@
 import Image from "next/image";
 import { gsap } from 'gsap';
-import DotGrid from "../components/DotGrid";
+import DotGrid from "../../components/DotGrid";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <div className="w-screen h-screen relative">
-        <DotGrid
+        <div className="w-screen h-dvh relative">
+          <DotGrid
             dotSize={4}
-            gap={18}
-            baseColor="#113983"
-            activeColor="#2e5dc2"
-            proximity={130}
-            shockRadius={170}
-            shockStrength={5}
-            resistance={150}
-            returnDuration={1.}
-        />
+            gap={15}
+            baseColor="#5227FF"
+            activeColor="#5227FF"
+            proximity={150}
+            shockRadius={250}
+            shockStrength={6}
+            resistance={750}
+            returnDuration={0.5}
+          />
         </div>
     </div>
   );

@@ -4,7 +4,7 @@ import DotGrid from "../../components/DotGrid";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex min-h-screen items-center justify-center bg-transparent font-sans">
         <div className="w-screen h-dvh relative">
           <DotGrid
             dotSize={4}

@@ -65,17 +65,17 @@ const items = [
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-                <BubbleMenu
-          logo={<span style={{ fontWeight: 700 }}>RB</span>}
+        <BubbleMenu
+          logo={<span className="text-black" style={{ fontWeight: 700 }}>Vinay Varma</span>}
           items={items}
           menuAriaLabel="Toggle navigation"
           menuBg="#ffffff"
           menuContentColor="#111111"
           useFixedPosition={false}
-          animationEase="back.out(1.5)"
-          animationDuration={0.5}
+          animationEase="bounce.out"
+          animationDuration={1}
           staggerDelay={0.12}
-/>
+        />
         {children}
       </body>
     </html>

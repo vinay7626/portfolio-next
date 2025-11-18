@@ -2,6 +2,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import Link from 'next/link';
 
 type MenuItem = {
   label: string;
@@ -108,6 +109,11 @@ export default function BubbleMenu({
     if (nextState) setShowOverlay(true);
     setIsMenuOpen(nextState);
     onMenuClick?.(nextState);
+  };
+
+  const handleItemClick = () => {
+    setIsMenuOpen(false);
+    onMenuClick?.(false);
   };
 
   useEffect(() => {
@@ -352,7 +358,8 @@ export default function BubbleMenu({
                   'box-border'
                 ].join(' ')}
               >
-                <a
+                <Link
+                  onClick={handleItemClick}
                   role="menuitem"
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
@@ -405,7 +412,7 @@ export default function BubbleMenu({
                   >
                     {item.label}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -301,7 +301,7 @@ export default function BubbleMenu({
           style={{ background: menuBg }}
         >
           <span
-            className="menu-line block mx-auto rounded-[2px]"
+            className="menu-line block mx-auto rounded-xs"
             style={{
               width: 26,
               height: 2,
@@ -310,7 +310,7 @@ export default function BubbleMenu({
             }}
           />
           <span
-            className="menu-line short block mx-auto rounded-[2px]"
+            className="menu-line short block mx-auto rounded-xs"
             style={{
               marginTop: '6px',
               width: 26,
@@ -331,7 +331,7 @@ export default function BubbleMenu({
             'inset-0',
             'flex items-center justify-center',
             'pointer-events-none',
-            'z-[1000]'
+            'z-1000'
           ].join(' ')}
           aria-hidden={!isMenuOpen}
         >
@@ -354,7 +354,7 @@ export default function BubbleMenu({
                 className={[
                   'pill-col',
                   'flex justify-center items-stretch',
-                  '[flex:0_0_calc(100%/3)]',
+                  'flex-[0_0_calc(100%/3)]',
                   'box-border'
                 ].join(' ')}
               >

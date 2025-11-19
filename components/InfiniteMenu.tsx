@@ -3,6 +3,7 @@ import { FC, useRef, useState, useEffect, MutableRefObject } from 'react';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
 import LogoLoop, { LogoItem } from './LogoLoop';
 import { SiReact } from 'react-icons/si';
+import { MdOpenInNew } from 'react-icons/md';
 
 const discVertShaderSource = `#version 300 es
 
@@ -1174,7 +1175,9 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
                 : 'bottom-[5%] sm:bottom-[3.8em] opacity-100 pointer-events-auto duration-500 scale-100 -translate-x-1/2'
             }`}
           >
-            <p className="select-none relative text-[#060010] top-0.5 text-[22px] sm:text-[26px]">&#x2197;</p>
+            {/* <p className="select-none relative text-[#060010] -top-0.5 text-[22px] sm:text-[26px] font-bold"> */}
+              <MdOpenInNew className='select-none relative text-[#060010] top-0 text-[22px] sm:text-[26px] font-bold' />
+              {/* </p> */}
           </div>
         </>
       )}

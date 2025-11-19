@@ -6,7 +6,7 @@ export default function Projects() {
     {
       image: 'https://picsum.photos/300/300?grayscale',
       link: 'https://google.com/',
-      title: 'Item 1',
+      title: 'My Portfolio',
       description: 'The thing you are experiencing right now!',
       techStack: [
         { node: <SiReact />, title: "React", href: "https://react.dev" },

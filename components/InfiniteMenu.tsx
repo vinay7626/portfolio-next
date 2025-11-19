@@ -1,6 +1,8 @@
 "use client";
 import { FC, useRef, useState, useEffect, MutableRefObject } from 'react';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
+import LogoLoop, { LogoItem } from './LogoLoop';
+import { SiReact } from 'react-icons/si';
 
 const discVertShaderSource = `#version 300 es
 
@@ -628,6 +630,7 @@ interface MenuItem {
   link: string;
   title: string;
   description: string;
+  techStack: Array<LogoItem>;
 }
 
 type ActiveItemCallback = (index: number) => void;
@@ -1046,7 +1049,10 @@ const defaultItems: MenuItem[] = [
     image: 'https://picsum.photos/900/900?grayscale',
     link: 'https://google.com/',
     title: '',
-    description: ''
+    description: '',
+    techStack: [
+      { node: <SiReact />, title: "React", href: "https://react.dev" },
+    ]
   }
 ];
 
@@ -1109,73 +1115,66 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
       {activeItem && (
         <>
           <h2
-            className={`
-          select-none
-          absolute
-          font-black
-          text-[4rem]
-          left-[1.6em]
-          top-1/2
-          transform
-          translate-x-[20%]
-          -translate-y-1/2
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? 'opacity-0 pointer-events-none duration-100'
-              : 'opacity-100 pointer-events-auto duration-500'
-          }
-        `}
+            className={`select-none absolute font-black 
+              text-[2rem] sm:text-[3rem] lg:text-[4rem]
+              left-1/2 -translate-x-1/2 top-[14%] sm:top-[10%]
+              lg:left-0 lg:top-1/2 lg:transform lg:translate-x-[20%] lg:-translate-y-1/2
+              text-center lg:text-left
+              max-w-[90%] lg:max-w-none
+              transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${
+              isMoving
+                ? 'opacity-0 pointer-events-none duration-100'
+                : 'opacity-100 pointer-events-auto duration-500'
+            }`}
           >
             {activeItem.title}
           </h2>
-
           <p
-            className={`
-          select-none
-          absolute
-          max-w-[10ch]
-          text-[1.5rem]
-          top-1/2
-          right-[1%]
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? 'opacity-0 pointer-events-none duration-100 translate-x-[-60%] -translate-y-1/2'
-              : 'opacity-100 pointer-events-auto duration-500 translate-x-[-90%] -translate-y-1/2'
-          }
-        `}
+            className={`select-none absolute 
+              text-[1rem] sm:text-[1.25rem] lg:text-[1.5rem]
+              max-w-[80%] sm:max-w-[70%]
+              left-1/2 -translate-x-1/2 bottom-[20%] sm:bottom-[15%]
+              lg:max-w-[10ch] lg:top-1/2 lg:right-[1%] lg:left-auto lg:bottom-auto
+              text-center lg:text-left
+              transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${
+              isMoving
+                ? 'opacity-0 pointer-events-none duration-100 lg:translate-x-[-60%] lg:-translate-y-1/2'
+                : 'opacity-100 pointer-events-auto duration-500 lg:translate-x-[-90%] lg:-translate-y-1/2'
+            }`}
           >
             {activeItem.description}
-          </p>
-
+          </p>{activeItem?.techStack?.length ? (
+            <LogoLoop
+                  logos={activeItem.techStack}
+                  speed={120}
+                  direction="left"
+                  logoHeight={48}
+                  gap={40}
+                  hoverSpeed={0}
+                  scaleOnHover
+                  fadeOut={false}
+                  fadeOutColor="#ffffff"
+                  ariaLabel="Technology partners"
+                  className={`fixed bottom-[18%] md:left-[90%] md:bottom-[12%] ${
+                        isMoving
+                          ? 'opacity-0 pointer-events-none duration-100 lg:translate-x-[-60%] lg:-translate-y-1/2'
+                          : 'opacity-50 pointer-events-auto duration-500 lg:translate-x-[-90%] lg:-translate-y-1/2'
+                      }`}
+                />
+          ) : null}
           <div
             onClick={handleButtonClick}
-            className={`
-          absolute
-          left-1/2
-          z-10
-          w-[60px]
-          h-[60px]
-          grid
-          place-items-center
-          bg-[#00ffff]
-          border-[5px]
-          border-black
-          rounded-full
-          cursor-pointer
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? '-bottom-20 opacity-0 pointer-events-none duration-100 scale-0 -translate-x-1/2'
-              : 'bottom-[3.8em] opacity-100 pointer-events-auto duration-500 scale-100 -translate-x-1/2'
-          }
-        `}
+            className={`absolute left-1/2 z-10 
+              w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]
+              grid place-items-center bg-[#00ffff] 
+              border-[4px] sm:border-[5px] border-black rounded-full cursor-pointer 
+              transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${
+              isMoving
+                ? '-bottom-20 opacity-0 pointer-events-none duration-100 scale-0 -translate-x-1/2'
+                : 'bottom-[5%] sm:bottom-[3.8em] opacity-100 pointer-events-auto duration-500 scale-100 -translate-x-1/2'
+            }`}
           >
-            <p className="select-none relative text-[#060010] top-0.5 text-[26px]">&#x2197;</p>
+            <p className="select-none relative text-[#060010] top-0.5 text-[22px] sm:text-[26px]">&#x2197;</p>
           </div>
         </>
       )}

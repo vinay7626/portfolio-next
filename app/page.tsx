@@ -1,5 +1,4 @@
 import DotGrid from "@/components/DotGrid";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -7,8 +6,8 @@ export default function Home() {
       <DotGrid
         dotSize={4}
         gap={15}
-        baseColor="#5227FF"
-        activeColor="#5227FF"
+        baseColor="#494450"
+        activeColor="#ffffff"
         proximity={150}
         shockRadius={250}
         shockStrength={6}

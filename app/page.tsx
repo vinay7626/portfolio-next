@@ -1,7 +1,6 @@
 import BlurText from "@/components/BlurText";
 import DotGrid from "@/components/DotGrid";
 import RotatingText from "@/components/RotatingText";
-import ScrollFloat from "@/components/ScrollFloat";
 import SplitText from "@/components/SplitText";
 import TextType from "@/components/TextType";
 
